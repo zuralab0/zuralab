@@ -1,3 +1,4 @@
+
 :root {
     --szin-fekete-alap: #030303; 
     --szin-feher-cim: #fdfdfd;
@@ -21,14 +22,19 @@ body {
 
 /* --- CANVAS HÁTTÉR --- */
 #neuron-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
 }
 
-/* Minden nagy szekciódhoz (hero, bento, stb.) add hozzá ezt az egy sort: */
-.hero, .bento-szekcio, .munkak-reszletes, .kapcsolat-reszletes {
-    pointer-events: none;
+.hero {
+    padding-top: 120px;
 }
+
 /* De a bennük lévő dolgok maradjanak kattinthatók */
 .hero-tartalom, .bento-grid, .urlap, .gomb, a {
     pointer-events: auto;
@@ -64,8 +70,13 @@ h1, h2, h3, h4, .logo-szoveg, .bento-alap-ikon, .szolg-ikon, .szolg-sorszam, .ma
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 11000; /* Magasabb, mint a mobil-menu */
-    pointer-events: none; /* Átengedi az egeret a háttérbe */
+    z-index: 11000;
+    pointer-events: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
 }
 
 .logo-link, .nav-links, .hamburger, .menu-elem {
@@ -443,6 +454,114 @@ textarea:-webkit-autofill:focus {
     visibility: hidden;
     pointer-events: none;
     display: none; /* Ez a legbiztosabb */
+}
+
+/* =========================
+   V2 LAYOUT FIX
+========================= */
+
+#neuron-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* NAVBAR FIX */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 11000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+
+    background: rgba(3,3,3,0.6);
+    backdrop-filter: blur(12px);
+}
+
+/* HERO FIX */
+.hero {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    padding-top: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* pointer-events hack OFF */
+.hero, .bento-szekcio {
+    pointer-events: auto;
+}
+
+/* tartalom mindig canvas felett */
+.hero-tartalom,
+.bento-grid,
+.navbar {
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== FIX START ===== */
+
+/* canvas biztos háttér */
+#neuron-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+/* content mindig felette */
+.navbar,
+.hero,
+.page-hero,
+.bento-szekcio,
+.szolgaltatasok-reszletes,
+.kapcsolat-reszletes,
+.munkak-reszletes,
+.minimal-lablec {
+    position: relative;
+    z-index: 2;
+}
+
+/* navbar layout fix */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+}
+
+/* hero ne csússzon fel */
+.hero {
+    padding-top: 120px;
+}
+
+/* ===== FIX END ===== */
+
+/* ===== SZOLGÁLTATÁSOK FIX ===== */
+
+/* animáció override (ha JS nem fut vagy nem triggerel) */
+.page-hero .animacio-fel,
+.szolgaltatasok-reszletes .animacio-fel,
+.cta-szekcio.animacio-fel,
+.minimal-lablec.animacio-fel {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.page-hero {
+    padding-top: 140px !important;
 }
 
 @media (max-width: 768px) {
