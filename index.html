@@ -35,11 +35,16 @@
             window.addEventListener('load', function() {
                 var loader = document.getElementById('loader');
                 if (loader) {
+                    // A 2000ms (2 másodperc) garantálja, hogy az animáció végigfusson
                     setTimeout(function() {
                         loader.style.opacity = '0';
                         loader.style.visibility = 'hidden';
-                        setTimeout(function() { loader.style.display = 'none'; }, 800);
-                    }, 1000);
+                        
+                        // Miután elhalványult, 0.8s múlva fizikailag is eltüntetjük
+                        setTimeout(function() { 
+                            loader.style.display = 'none'; 
+                        }, 800);
+                    }, 2000); 
                 }
             });
             
