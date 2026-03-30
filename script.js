@@ -199,9 +199,16 @@ const navbar = document.querySelector('.navbar');
 if (hamburger && mobilMenu) {
     hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
+
         hamburger.classList.toggle('aktiv');
         mobilMenu.classList.toggle('nyitva');
-        // Ha nyitva a menü, a navbar kapjon pointer-eventet, hogy az X elérhető legyen
+
+        if (mobilMenu.classList.contains('nyitva')) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
         navbar.style.pointerEvents = 'auto';
     });
 
@@ -209,11 +216,16 @@ if (hamburger && mobilMenu) {
         link.addEventListener('click', () => {
             hamburger.classList.remove('aktiv');
             mobilMenu.classList.remove('nyitva');
+            document.body.style.overflow = "";
         });
     });
+   
 
     document.addEventListener('click', (e) => {
-        if (mobilMenu.classList.contains('nyitva') && !mobilMenu.contains(e.target) && e.target !== hamburger) {
+        const isClickInsideMenu = mobilMenu.contains(e.target);
+        const isClickOnHamburger = hamburger.contains(e.target);
+
+        if (mobilMenu.classList.contains('nyitva') && !isClickInsideMenu && !isClickOnHamburger) {
             hamburger.classList.remove('aktiv');
             mobilMenu.classList.remove('nyitva');
         }
