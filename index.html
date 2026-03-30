@@ -19,6 +19,7 @@
     <link rel="icon" type="image/png" href="img/logo.webp">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -28,6 +29,28 @@
             <div class="loader-bar"><span></span></div>
         </div>
     </div>
+
+        <script>
+            // Ez a kis kód azonnal lefut, függetlenül a script.js-től
+            window.addEventListener('load', function() {
+                var loader = document.getElementById('loader');
+                if (loader) {
+                    setTimeout(function() {
+                        loader.style.opacity = '0';
+                        loader.style.visibility = 'hidden';
+                        setTimeout(function() { loader.style.display = 'none'; }, 800);
+                    }, 1000);
+                }
+            });
+            
+            // Biztonsági tartalék: 4 másodperc után mindenképp tűnjön el
+            setTimeout(function() {
+                var loader = document.getElementById('loader');
+                if (loader && loader.style.display !== 'none') {
+                    loader.style.display = 'none';
+                }
+            }, 4000);
+        </script>
 
     <canvas id="neuron-canvas"></canvas>
 
