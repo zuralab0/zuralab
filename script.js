@@ -216,23 +216,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-                // --- JAVÍTOTT LOADER SCRIPT ---
-        window.addEventListener('load', () => {
+        // --- GOLYÓÁLLÓ LOADER SCRIPT ---
+        function hideLoader() {
             const loader = document.getElementById('loader');
-            
-            setTimeout(() => {
-                if (loader) {
-                    loader.classList.add('rejtett');
-                }
-            }, 500); // Fél másodperc után tűnik el, ha minden oké
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                loader.style.pointerEvents = 'none';
+                
+                // 0.8 másodperc után fizikailag is eltávolítjuk az útból
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }
+        }
+
+        // 1. Megpróbáljuk, amint a DOM kész (nagyon gyors)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Adunk neki egy kis szünetet, hogy látszódjon az animáció (pl. 1 mp)
+            setTimeout(hideLoader, 1000);
         });
 
-        // BIZTONSÁGI KAPCSOLÓ: Ha 3 mp után még mindig ott lenne, tüntesse el erővel
-        setTimeout(() => {
-            const loader = document.getElementById('loader');
-            if (loader && !loader.classList.contains('rejtett')) {
-                loader.classList.add('rejtett');
-                console.log("Loader kényszerítve leállítva (timeout)");
-            }
-        }, 3000);
+        // 2. Ha a DOM valamiért beragadna, a teljes betöltésnél is megpróbáljuk
+        window.addEventListener('load', hideLoader);
+
+        // 3. ULTIMÁTUM: 4 másodperc után mindenképp tűnjön el
+        setTimeout(hideLoader, 4000);
 });
