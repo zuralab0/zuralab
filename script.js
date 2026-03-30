@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 6. ŰRLAP KÜLDÉSE EMAILJS-SEL (AZ ÚJ RÉSZ) ---
     // IDE MÁSOLD BE A PUBLIC KEY-ED!
-    emailjs.init("A_TE_PUBLIC_KEY-ED"); 
+    emailjs.init("AuQik09ZXTeARRYns"); 
 
     const urlap = document.getElementById('zura-urlap');
     const urlapUzenet = document.getElementById('urlap-uzenet');
