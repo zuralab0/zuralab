@@ -308,6 +308,26 @@ textarea.urlap-input { resize: none; height: 120px; }
     .munka-kartya.bento-szeles { grid-column: span 1; }
 }
 
+/* --- ŰRLAP VISSZAJELZÉS --- */
+.rejtett-uzenet {
+    display: none;
+    margin-top: 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.uzenet-siker {
+    display: block;
+    color: var(--szin-bronz);
+}
+.uzenet-hiba {
+    display: block;
+    color: #ef4444; /* Piros hiba esetén */
+}
+
+
 @media (max-width: 768px) {
     /* Mobilon kikapcsoljuk az egyedi kurzort, mert érintőképernyőn csak befagyna */
     .kurzor-pont, .kurzor-kor { display: none !important; }

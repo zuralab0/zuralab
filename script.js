@@ -214,6 +214,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 6. ŰRLAP KÜLDÉSE ÚJRATÖLTÉS NÉLKÜL (AJAX) ---
+    const urlap = document.getElementById('zura-urlap');
+    const urlapUzenet = document.getElementById('urlap-uzenet');
+    const kuldesGombSzoveg = document.querySelector('#kuldes-gomb .gomb-szoveg');
+
+    if (urlap) {
+        urlap.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Ez a parancs blokkolja az átirányítást!
+            
+            // Gomb szövegének cseréje töltés közben
+            const eredetiSzoveg = kuldesGombSzoveg.innerText;
+            kuldesGombSzoveg.innerText = "KÜLDÉS...";
+            
+            const formData = new FormData(urlap);
+            
+            try {
+                // Adatok elküldése a háttérben
+                const response = await fetch(urlap.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Ha sikeres
+                    urlapUzenet.innerText = "Sikeres küldés! Hamarosan jelentkezünk.";
+                    urlapUzenet.className = "rejtett-uzenet uzenet-siker";
+                    urlap.reset(); // Űrlap kiürítése
+                } else {
+                    // Ha a Formspree hibát dob
+                    urlapUzenet.innerText = "Hiba történt. Kérlek, próbáld újra!";
+                    urlapUzenet.className = "rejtett-uzenet uzenet-hiba";
+                }
+            } catch (error) {
+                // Ha megszakad a net
+                urlapUzenet.innerText = "Hálózati hiba. Ellenőrizd a kapcsolatot!";
+                urlapUzenet.className = "rejtett-uzenet uzenet-hiba";
+            } finally {
+                // Gomb szövegének visszaállítása
+                kuldesGombSzoveg.innerText = eredetiSzoveg;
+                
+                // Üzenet eltüntetése 5 másodperc múlva
+                setTimeout(() => {
+                    urlapUzenet.className = "rejtett-uzenet";
+                }, 5000);
+            }
+        });
+    }
+
     document.querySelectorAll('.animacio-fel').forEach(el => observer.observe(el));
     document.querySelectorAll('.idozitett-animacio-kontener').forEach(el => observer.observe(el));
 });
