@@ -138,13 +138,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     document.querySelectorAll('.animacio-fel').forEach(el => observer.observe(el));
 
-    // --- 5. MOBIL MENÜ ---
+    // --- 5. MOBIL MENÜ (JAVÍTOTT VERZIÓ) ---
     const hamburger = document.querySelector('.hamburger');
     const mobilMenu = document.querySelector('.mobil-menu');
+    const navLinkek = document.querySelectorAll('.mobil-menu .nav-link'); // A mobil menü linkjei
+
     if (hamburger && mobilMenu) {
-        hamburger.addEventListener('click', () => {
+        // Nyitás/Csukás a hamburgerre kattintva
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Megakadályozza, hogy a kattintás "átmenjen" a dokumentumra
             hamburger.classList.toggle('aktiv');
             mobilMenu.classList.toggle('nyitva');
+        });
+
+        // 1. Bezárás, ha rákattintasz egy linkre (oldalváltáskor)
+        navLinkek.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('aktiv');
+                mobilMenu.classList.remove('nyitva');
+            });
+        });
+
+        // 2. Bezárás, ha a menün KÍVÜLRE kattintasz (például a háttérre)
+        document.addEventListener('click', (e) => {
+            if (mobilMenu.classList.contains('nyitva') && !mobilMenu.contains(e.target) && e.target !== hamburger) {
+                hamburger.classList.remove('aktiv');
+                mobilMenu.classList.remove('nyitva');
+            }
         });
     }
 
