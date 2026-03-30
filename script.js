@@ -241,6 +241,15 @@ window.addEventListener('scroll', () => {
     }
 });
 
+const closeBtn = document.querySelector('.menu-close');
+
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        hamburger.classList.remove('aktiv');
+        mobilMenu.classList.remove('nyitva');
+        document.body.style.overflow = "";
+    });
+}
 
 // --- 5. EMAILJS INTEGRÁCIÓ ---
 const contactForm = document.getElementById('contact-form');

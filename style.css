@@ -564,6 +564,22 @@ textarea:-webkit-autofill:focus {
     padding-top: 140px !important;
 }
 
+.menu-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 11001;
+    transition: 0.3s;
+}
+
+.menu-close:hover {
+    color: #C5832B;
+    transform: scale(1.2);
+}
+
 @media (max-width: 768px) {
     /* Mobilon kikapcsoljuk az egyedi kurzort, mert érintőképernyőn csak befagyna */
     .kurzor-pont, .kurzor-kor { display: none !important; }
