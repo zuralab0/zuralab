@@ -353,6 +353,69 @@ textarea:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #030303;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Minden felett */
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: #c5832b;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    animation: pulsate 1.5s infinite ease-in-out;
+}
+
+.loader-bar {
+    width: 150px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loader-bar span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #c5832b;
+    transform: translateX(-100%);
+    animation: loading-progress 2s infinite ease-in-out;
+}
+
+@keyframes pulsate {
+    0%, 100% { opacity: 0.5; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes loading-progress {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+
+/* Eltüntető osztály */
+#loader.rejtett {
+    opacity: 0;
+    visibility: hidden;
+}
+
 @media (max-width: 768px) {
     /* Mobilon kikapcsoljuk az egyedi kurzort, mert érintőképernyőn csak befagyna */
     .kurzor-pont, .kurzor-kor { display: none !important; }

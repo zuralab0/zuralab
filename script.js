@@ -215,4 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+        window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        
+        // Egy kis késleltetés (pl. 500ms), hogy ne csak elvillanjon, ha túl gyors a net
+        setTimeout(() => {
+            loader.classList.add('rejtett');
+        }, 800);
+    });
 });
