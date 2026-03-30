@@ -52,10 +52,18 @@ h1, h2, h3, h4, .logo-szoveg, .bento-alap-ikon, .szolg-ikon, .szolg-sorszam, .ma
 
 /* --- NAVIGÁCIÓ (Dark Glassmorphism) --- */
 .navbar {
-    position: fixed; top: 0; width: 100%;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 5%; z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: var(--atmenet);
+    position: fixed; 
+    top: 0; 
+    width: 100%;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1.5rem 5%; 
+    z-index: 11000; /* Legyen magasabb, mint a mobil-menu 10000-es értéke! */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    transition: var(--atmenet);
+    /* Opcionális: Adj neki egy kis blur-t, ha akarod, hogy látszódjon alatta a tartalom görgetéskor */
+    backdrop-filter: blur(10px); 
 }
 .navbar.glass {
     background: rgba(3, 3, 3, 0.6); 
@@ -253,12 +261,17 @@ textarea.urlap-input { resize: none; height: 120px; }
 
 /* --- MOBIL HAMBURGER IKON --- */
 .hamburger {
-    display: none; /* Asztali nézeten rejtve */
+    display: none; /* Asztali nézeten rejtve marad */
     flex-direction: column;
     justify-content: space-between;
     width: 35px;
     height: 24px;
-    z-index: 10001; /* A mobil menü felett kell lennie! */
+    
+    /* EZ A KÉT SOR A MEGOLDÁS: */
+    position: relative; 
+    z-index: 11001; 
+    
+    cursor: pointer;
 }
 .vonal {
     height: 2px;
