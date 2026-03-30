@@ -1,0 +1,12 @@
+# Függőségek (ezeket a Railway telepíti magának)
+node_modules/
+
+# Titkos adatok (jelszavak, API kulcsok)
+.env
+
+# Operációs rendszer felesleges fájljai
+.DS_Store
+Thumbs.db
+
+# Log fájlok
+npm-debug.log*

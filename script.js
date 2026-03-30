@@ -43,107 +43,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. INTERAKTÍV NEURON CANVAS ---
     const canvas = document.getElementById('neuron-canvas');
-    const ctx = canvas.getContext('2d');
-    
-    // Canvas méretezése az ablakhoz
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    let particlesArray = [];
-    // Mennyi neuron legyen a képernyőn (mérettől függően)
-    const numberOfParticles = (canvas.width * canvas.height) / 12000;
+        let particlesArray = [];
+        const numberOfParticles = (canvas.width * canvas.height) / 12000;
 
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            // Véletlenszerű irány és sebesség
-            this.directionX = (Math.random() * 0.4) - 0.2;
-            this.directionY = (Math.random() * 0.4) - 0.2;
-            this.size = Math.random() * 2 + 1; // 1-3px méret
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.directionX = (Math.random() * 0.4) - 0.2;
+                this.directionY = (Math.random() * 0.4) - 0.2;
+                this.size = Math.random() * 2 + 1;
+            }
+
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(197, 131, 43, 0.8)';
+                ctx.fill();
+            }
         }
 
-        update() {
-            // Visszapattanás a szélekről
-            if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-            if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-
-            this.x += this.directionX;
-            this.y += this.directionY;
-            this.draw();
+        function init() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
         }
 
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(197, 131, 43, 0.8)'; // Bronz pöttyök
-            ctx.fill();
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
         }
-    }
 
-    function init() {
-        particlesArray = [];
-        for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
-        }
-    }
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
+                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    
+                    if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(0, 91, 181, ${opacityValue})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
 
-    function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-        }
-        connect();
-    }
-
-    // Neuronok összekapcsolása
-    function connect() {
-        let opacityValue = 1;
-        for (let a = 0; a < particlesArray.length; a++) {
-            for (let b = a; b < particlesArray.length; b++) {
-                // Távolság a két pont között
-                let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                               ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                
-                // Ha elég közel vannak, vonalat húzunk
-                if (distance < (canvas.width / 10) * (canvas.height / 10)) {
-                    opacityValue = 1 - (distance / 20000);
-                    ctx.strokeStyle = `rgba(0, 91, 181, ${opacityValue})`; // Kék vonalak
-                    ctx.lineWidth = 0.5;
+                let mouseDistance = ((particlesArray[a].x - mouseX) * (particlesArray[a].x - mouseX)) + 
+                                     ((particlesArray[a].y - mouseY) * (particlesArray[a].y - mouseY));
+                if (mouseDistance < 25000) {
+                    opacityValue = 1 - (mouseDistance / 25000);
+                    ctx.strokeStyle = `rgba(197, 131, 43, ${opacityValue})`; 
+                    ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.lineTo(mouseX, mouseY);
                     ctx.stroke();
                 }
             }
-
-            // Interakció az egérrel: A hálózat rátapad az egérre
-            let mouseDistance = ((particlesArray[a].x - mouseX) * (particlesArray[a].x - mouseX)) + 
-                                ((particlesArray[a].y - mouseY) * (particlesArray[a].y - mouseY));
-            if (mouseDistance < 25000) {
-                opacityValue = 1 - (mouseDistance / 25000);
-                // Erősebb bronz vonal az egérhez
-                ctx.strokeStyle = `rgba(197, 131, 43, ${opacityValue})`; 
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                ctx.lineTo(mouseX, mouseY);
-                ctx.stroke();
-            }
         }
-    }
 
-    // Ablak átméretezésének kezelése
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
         init();
-    });
-
-    init();
-    animate();
+        animate();
+    }
 
 
     // --- 3. TECH HACKER SZÖVEG DEKÓDOLÓ ANIMÁCIÓ ---
@@ -152,19 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     decoders.forEach(el => {
         let iterations = 0;
-        const finalWord = el.dataset.ertek;
+        const finalWord = el.dataset.ertek || el.innerText;
         const interval = setInterval(() => {
             el.innerText = finalWord.split("").map((letter, index) => {
-                if(index < iterations) {
-                    return finalWord[index];
-                }
+                if(index < iterations) return finalWord[index];
                 return letters[Math.floor(Math.random() * 42)]
             }).join("");
 
-            if(iterations >= finalWord.length){ 
-                clearInterval(interval);
-            }
-            iterations += 1 / 3; // Sebesség beállítása
+            if(iterations >= finalWord.length) clearInterval(interval);
+            iterations += 1 / 3;
         }, 30);
     });
 
@@ -174,11 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animacio-lathato');
                 if(entry.target.classList.contains('idozitett-animacio-kontener')) {
-                    const children = entry.target.children;
-                    Array.from(children).forEach((child, index) => {
-                        setTimeout(() => {
-                            child.classList.add('animacio-lathato');
-                        }, index * 150);
+                    Array.from(entry.target.children).forEach((child, index) => {
+                        setTimeout(() => child.classList.add('animacio-lathato'), index * 150);
                     });
                 }
                 observer.unobserve(entry.target);
@@ -186,25 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
+    document.querySelectorAll('.animacio-fel').forEach(el => observer.observe(el));
+    document.querySelectorAll('.idozitett-animacio-kontener').forEach(el => observer.observe(el));
+
     // --- 5. MOBIL MENÜ LOGIKA ---
     const hamburger = document.querySelector('.hamburger');
     const mobilMenu = document.querySelector('.mobil-menu');
     const mobilLinkek = document.querySelectorAll('.mobil-link');
 
     if (hamburger && mobilMenu) {
-        // Kattintás a hamburgerre
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('aktiv');
             mobilMenu.classList.toggle('nyitva');
-            // Megakadályozzuk a háttér görgetését, amíg nyitva a menü
-            if (mobilMenu.classList.contains('nyitva')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            document.body.style.overflow = mobilMenu.classList.contains('nyitva') ? 'hidden' : 'auto';
         });
 
-        // Kattintás egy linkre a menüben (bezárja a menüt)
         mobilLinkek.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('aktiv');
@@ -214,57 +192,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 6. ŰRLAP KÜLDÉSE ÚJRATÖLTÉS NÉLKÜL (AJAX) ---
+    // --- 6. ŰRLAP KÜLDÉSE SAJÁT RAILWAY SZERVERRE ---
     const urlap = document.getElementById('zura-urlap');
     const urlapUzenet = document.getElementById('urlap-uzenet');
     const kuldesGombSzoveg = document.querySelector('#kuldes-gomb .gomb-szoveg');
 
     if (urlap) {
         urlap.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Ez a parancs blokkolja az átirányítást!
+            e.preventDefault(); 
             
-            // Gomb szövegének cseréje töltés közben
             const eredetiSzoveg = kuldesGombSzoveg.innerText;
             kuldesGombSzoveg.innerText = "KÜLDÉS...";
             
-            const formData = new FormData(urlap);
+            // Adatok összeszedése az inputok 'name' attribútuma alapján
+            const formData = {
+                name: urlap.querySelector('[name="name"]').value,
+                email: urlap.querySelector('[name="email"]').value,
+                message: urlap.querySelector('[name="message"]').value
+            };
             
             try {
-                // Adatok elküldése a háttérben
-                const response = await fetch(urlap.action, {
+                // Küldés a saját Node.js szervered /send-email végpontjára
+                const response = await fetch('/send-email', {
                     method: 'POST',
-                    body: formData,
                     headers: {
+                        'Content-Type': 'application/json',
                         'Accept': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify(formData)
                 });
                 
-                if (response.ok) {
-                    // Ha sikeres
+                const result = await response.json();
+
+                if (response.ok && result.success) {
                     urlapUzenet.innerText = "Sikeres küldés! Hamarosan jelentkezünk.";
-                    urlapUzenet.className = "rejtett-uzenet uzenet-siker";
-                    urlap.reset(); // Űrlap kiürítése
+                    urlapUzenet.style.display = "block";
+                    urlapUzenet.style.color = "#c5832b"; // Bronz szín a stílusodhoz
+                    urlap.reset();
                 } else {
-                    // Ha a Formspree hibát dob
-                    urlapUzenet.innerText = "Hiba történt. Kérlek, próbáld újra!";
-                    urlapUzenet.className = "rejtett-uzenet uzenet-hiba";
+                    throw new Error('Szerver hiba');
                 }
             } catch (error) {
-                // Ha megszakad a net
-                urlapUzenet.innerText = "Hálózati hiba. Ellenőrizd a kapcsolatot!";
-                urlapUzenet.className = "rejtett-uzenet uzenet-hiba";
+                urlapUzenet.innerText = "Hiba történt. Kérlek, próbáld újra!";
+                urlapUzenet.style.display = "block";
+                urlapUzenet.style.color = "red";
             } finally {
-                // Gomb szövegének visszaállítása
                 kuldesGombSzoveg.innerText = eredetiSzoveg;
-                
-                // Üzenet eltüntetése 5 másodperc múlva
                 setTimeout(() => {
-                    urlapUzenet.className = "rejtett-uzenet";
+                    urlapUzenet.style.display = "none";
                 }, 5000);
             }
         });
     }
-
-    document.querySelectorAll('.animacio-fel').forEach(el => observer.observe(el));
-    document.querySelectorAll('.idozitett-animacio-kontener').forEach(el => observer.observe(el));
 });
