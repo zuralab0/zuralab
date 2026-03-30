@@ -206,9 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Adatok összeszedése az inputok 'name' attribútuma alapján
             const formData = {
-                name: urlap.querySelector('[name="name"]').value,
-                email: urlap.querySelector('[name="email"]').value,
-                message: urlap.querySelector('[name="message"]').value
+                name: urlap.querySelector('[name="name"]')?.value || "Név hiányzik",
+                email: urlap.querySelector('[name="email"]')?.value || "Email hiányzik",
+                subject: urlap.querySelector('[name="subject"]')?.value || "Nincs téma", 
+                message: urlap.querySelector('[name="message"]')?.value || "Üzenet hiányzik"
             };
             
             try {

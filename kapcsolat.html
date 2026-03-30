@@ -106,35 +106,33 @@
             </div>
 
             <div class="kapcsolat-urlap glass-kartya animacio-fel kek-keret hover-bento">
-                <form id="zura-urlap" action="https://formspree.io/f/SAJAT_KODOD_IDE" method="POST" class="urlap">
-    
-                <div class="urlap-sor">
-                    <div class="urlap-csoport">
-                        <label for="nev">Neved</label>
-                        <input type="text" id="nev" name="Név" class="urlap-input" placeholder="John Doe" required>
+                <form id="zura-urlap" class="urlap"> <div class="urlap-sor">
+                        <div class="urlap-csoport">
+                            <label for="nev">Neved</label>
+                            <input type="text" id="nev" name="name" class="urlap-input" placeholder="Lánczos Kristóf" required>
+                        </div>
+                        <div class="urlap-csoport">
+                            <label for="email">Email címed</label>
+                            <input type="email" id="email" name="email" class="urlap-input" placeholder="batyohaver@gmail.com" required>
+                        </div>
                     </div>
+
                     <div class="urlap-csoport">
-                        <label for="email">Email címed</label>
-                        <input type="email" id="email" name="Email" class="urlap-input" placeholder="john@company.com" required>
+                        <label for="targy">Projekt Témája</label>
+                        <input type="text" id="targy" name="subject" class="urlap-input" placeholder="Pl. Új weboldal fejlesztése" required>
                     </div>
-                </div>
 
-                <div class="urlap-csoport">
-                    <label for="targy">Projekt Témája</label>
-                    <input type="text" id="targy" name="Tárgy" class="urlap-input" placeholder="Pl. Új weboldal fejlesztése" required>
-                </div>
+                    <div class="urlap-csoport">
+                        <label for="uzenet">Üzenet</label>
+                        <textarea id="uzenet" name="message" class="urlap-input" placeholder="Mesélj a projektedről..." required></textarea>
+                    </div>
 
-                <div class="urlap-csoport">
-                    <label for="uzenet">Üzenet</label>
-                    <textarea id="uzenet" name="Üzenet" class="urlap-input" placeholder="Mesélj a projektedről, a céljaidról és a határidőkről..." required></textarea>
-                </div>
+                    <button type="submit" id="kuldes-gomb" class="gomb magnetic-gomb hover-link">
+                        <span class="gomb-szoveg">Üzenet Küldése</span>
+                    </button>
+                    <p id="urlap-uzenet" class="rejtett-uzenet"></p>
 
-                <button type="submit" id="kuldes-gomb" class="gomb magnetic-gomb hover-link">
-                    <span class="gomb-szoveg">Üzenet Küldése</span>
-                </button>
-                <p id="urlap-uzenet" class="rejtett-uzenet"></p>
-
-            </form>
+                </form>
                 <div class="bento-alap-ikon kek-szin">✉</div>
             </div>
 

@@ -328,6 +328,18 @@ textarea.urlap-input { resize: none; height: 120px; }
 }
 
 
+/* Autofill háttér és szövegszín javítása */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: white !important; /* Szöveg színe */
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important; /* Háttér színe (cseréld a sötétedre) */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 @media (max-width: 768px) {
     /* Mobilon kikapcsoljuk az egyedi kurzort, mert érintőképernyőn csak befagyna */
     .kurzor-pont, .kurzor-kor { display: none !important; }
