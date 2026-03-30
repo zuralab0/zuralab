@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const templateParams = {
                 name: urlap.querySelector('[name="name"]')?.value || "Név hiányzik",
                 email: urlap.querySelector('[name="email"]')?.value || "Email hiányzik",
+                subject: urlap.querySelector('[name="subject"]')?.value || "Nincs téma",
                 message: urlap.querySelector('[name="message"]')?.value || "Üzenet hiányzik"
             };
             
