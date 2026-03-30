@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kapcsolat - Zura Lab</title>
+
+    <meta name="description" content="Készen állsz szintet lépni? Vedd fel a kapcsolatot a Zura Lab csapatával, és építsünk együtt egy prémium, villámgyors weboldalt a vállalkozásodnak.">
+    <meta name="keywords" content="zura lab kapcsolat, webfejlesztő ajánlatkérés, webdesign kapcsolat, egyedi weboldal rendelés">
+    <meta name="author" content="Zura Lab">
+
+    <meta property="og:title" content="Kapcsolat - Zura Lab | Indítsuk El">
+    <meta property="og:description" content="Minden nagyszerű projekt egy egyszerű üzenettel kezdődik. Írd meg az elképzelésed, és 24 órán belül válaszolunk!">
+    <meta property="og:image" content="https://zuralab-production.up.railway.app/img/social-preview.jpg"> 
+    <meta property="og:url" content="https://zuralab-production.up.railway.app/kapcsolat.html">
+    <meta property="og:type" content="website">
+    
+    <meta name="theme-color" content="#030303">
+
+    <link rel="icon" type="image/png" href="img/logo.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,10 +36,10 @@
         </a>
         
         <ul class="nav-links">
-            <li><a href="index.html" class="menu-elem hover-link aktiv">Kezdőlap</a></li>
+            <li><a href="index.html" class="menu-elem hover-link">Kezdőlap</a></li>
             <li><a href="szolgaltatasok.html" class="menu-elem hover-link">Szolgáltatások</a></li>
             <li><a href="munkak.html" class="menu-elem hover-link">Munkáink</a></li>
-            <li><a href="kapcsolat.html" class="menu-elem hover-link kiemelt-menu">Kapcsolat</a></li>
+            <li><a href="kapcsolat.html" class="menu-elem hover-link aktiv kiemelt-menu">Kapcsolat</a></li>
         </ul>
 
         <div class="hamburger hover-link">
@@ -36,10 +51,10 @@
 
     <div class="mobil-menu glass-kartya">
         <ul class="mobil-nav-links">
-            <li><a href="index.html" class="mobil-link aktiv">Kezdőlap</a></li>
+            <li><a href="index.html" class="mobil-link">Kezdőlap</a></li>
             <li><a href="szolgaltatasok.html" class="mobil-link">Szolgáltatások</a></li>
             <li><a href="munkak.html" class="mobil-link">Munkáink</a></li>
-            <li><a href="kapcsolat.html" class="mobil-link">Kapcsolat</a></li>
+            <li><a href="kapcsolat.html" class="mobil-link aktiv">Kapcsolat</a></li>
         </ul>
         <div class="mobil-lablec">
             <p>hello@zuralab.hu</p>
@@ -82,7 +97,7 @@
                         <div class="info-ikon bronz-szin">⚲</div>
                         <div class="info-szoveg">
                             <h4>Bázis</h4>
-                            <p>Magyarország</p>
+                            <p>Budapest, Hungary (Remote globally)</p>
                         </div>
                     </div>
                 </div>
@@ -91,27 +106,31 @@
             </div>
 
             <div class="kapcsolat-urlap glass-kartya animacio-fel kek-keret hover-bento">
-                <form action="#" method="POST" class="urlap">
+                <form action="https://api.web3forms.com/submit" method="POST" class="urlap">
+                    
+                    <input type="hidden" name="access_key" value="2f076738-c21c-4107-a917-7d081dcf408b">
+
+                    <input type="hidden" name="redirect" value="https://zuralab-production.up.railway.app/kapcsolat.html">
                     
                     <div class="urlap-sor">
                         <div class="urlap-csoport">
                             <label for="nev">Neved</label>
-                            <input type="text" id="nev" name="nev" class="urlap-input" placeholder="John Doe" required>
+                            <input type="text" id="nev" name="Név" class="urlap-input" placeholder="John Doe" required>
                         </div>
                         <div class="urlap-csoport">
                             <label for="email">Email címed</label>
-                            <input type="email" id="email" name="email" class="urlap-input" placeholder="john@company.com" required>
+                            <input type="email" id="email" name="Email" class="urlap-input" placeholder="john@company.com" required>
                         </div>
                     </div>
 
                     <div class="urlap-csoport">
                         <label for="targy">Projekt Témája</label>
-                        <input type="text" id="targy" name="targy" class="urlap-input" placeholder="Pl. Új weboldal fejlesztése" required>
+                        <input type="text" id="targy" name="Tárgy" class="urlap-input" placeholder="Pl. Új weboldal fejlesztése" required>
                     </div>
 
                     <div class="urlap-csoport">
                         <label for="uzenet">Üzenet</label>
-                        <textarea id="uzenet" name="uzenet" class="urlap-input" placeholder="Mesélj a projektedről, a céljaidról és a határidőkről..." required></textarea>
+                        <textarea id="uzenet" name="Üzenet" class="urlap-input" placeholder="Mesélj a projektedről, a céljaidról és a határidőkről..." required></textarea>
                     </div>
 
                     <button type="submit" class="gomb magnetic-gomb hover-link">
