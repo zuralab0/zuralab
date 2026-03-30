@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munkáink - Zura Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="neuron-canvas"></canvas>
+
+    <div class="kurzor-pont"></div>
+    <div class="kurzor-kor"></div>
+
+    <nav class="navbar glass">
+        <a href="index.html" class="logo-link hover-link">
+            <img src="img/logo.png" alt="Zura Lab Ikon" class="logo-kep">
+            <div class="logo-szoveg">ZURA LAB.</div>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="menu-elem hover-link aktiv">Kezdőlap</a></li>
+            <li><a href="szolgaltatasok.html" class="menu-elem hover-link">Szolgáltatások</a></li>
+            <li><a href="munkak.html" class="menu-elem hover-link">Munkáink</a></li>
+            <li><a href="kapcsolat.html" class="menu-elem hover-link kiemelt-menu">Kapcsolat</a></li>
+        </ul>
+
+        <div class="hamburger hover-link">
+            <span class="vonal"></span>
+            <span class="vonal"></span>
+            <span class="vonal"></span>
+        </div>
+    </nav>
+
+    <div class="mobil-menu glass-kartya">
+        <ul class="mobil-nav-links">
+            <li><a href="index.html" class="mobil-link aktiv">Kezdőlap</a></li>
+            <li><a href="szolgaltatasok.html" class="mobil-link">Szolgáltatások</a></li>
+            <li><a href="munkak.html" class="mobil-link">Munkáink</a></li>
+            <li><a href="kapcsolat.html" class="mobil-link">Kapcsolat</a></li>
+        </ul>
+        <div class="mobil-lablec">
+            <p>hello@zuralab.hu</p>
+        </div>
+    </div>
+
+    <header class="page-hero">
+        <div class="page-hero-tartalom animacio-fel">
+            <div class="hero-felirat">Rendszer Archívum</div>
+            <h1 class="dekodolo-szoveg" data-ertek="MUNKÁINK">MUNKÁINK</h1>
+            <p>Válogatás a legutóbbi, prémium projektjeinkből. Minden egyes sor kód a maximális teljesítményre és a lenyűgöző felhasználói élményre lett hangolva.</p>
+        </div>
+    </header>
+
+    <main class="munkak-reszletes">
+        <div class="munka-grid idozitett-animacio-kontener">
+            
+            <div class="munka-kartya bento-szeles glass-kartya animacio-fel bronz-keret hover-bento">
+                <div class="munka-kep-kontener">
+                    <div class="munka-kep-placeholder">Kép / Mockup Helye (img/projekt1.jpg)</div>
+                    <div class="munka-cimke">UI/UX & Fejlesztés</div>
+                </div>
+                <div class="munka-tartalom">
+                    <h3>Tech Startup Arculat & Platform</h3>
+                    <p>Teljes UI/UX tervezés és front-end fejlesztés egy innovatív fintech cégnek. Brutális betöltési sebesség és sötét módú, high-tech megjelenés.</p>
+                    <a href="kapcsolat.html" class="bento-link hover-link bronz-szin">Hasonlót Szeretnék →</a>
+                </div>
+            </div>
+
+            <div class="munka-kartya glass-kartya animacio-fel kek-keret hover-bento">
+                <div class="munka-kep-kontener">
+                    <div class="munka-kep-placeholder">Kép Helye (img/projekt2.jpg)</div>
+                    <div class="munka-cimke">E-kereskedelem</div>
+                </div>
+                <div class="munka-tartalom">
+                    <h3>Elegáns Webshop</h3>
+                    <p>Egyedi animációkkal és modern dizájnnal készült, konverzióra optimalizált e-kereskedelmi felület.</p>
+                </div>
+            </div>
+
+            <div class="munka-kartya glass-kartya animacio-fel bronz-keret hover-bento">
+                <div class="munka-kep-kontener">
+                    <div class="munka-kep-placeholder">Kép Helye (img/projekt3.jpg)</div>
+                    <div class="munka-cimke">Portfólió</div>
+                </div>
+                <div class="munka-tartalom">
+                    <h3>Kreatív Ügynökség</h3>
+                    <p>Végtelenül letisztult bemutatkozó oldal egy kreatív stúdiónak, sima görgetési élménnyel.</p>
+                </div>
+            </div>
+
+            <div class="munka-kartya bento-szeles glass-kartya animacio-fel kek-keret hover-bento">
+                <div class="munka-kep-kontener">
+                    <div class="munka-kep-placeholder">Kép / Mockup Helye (img/projekt4.jpg)</div>
+                    <div class="munka-cimke">SaaS Platform</div>
+                </div>
+                <div class="munka-tartalom">
+                    <h3>AI Webalkalmazás Interfész</h3>
+                    <p>Komplex adatok vizualizációja letisztult, könnyen értelmezhető formában. Mikro-interakciók és üveghatású elemek a prémium érzetért.</p>
+                    <a href="kapcsolat.html" class="bento-link hover-link kek-szin">Hasonlót Szeretnék →</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="minimal-lablec animacio-fel">
+        <div class="lablec-bal">
+            <h2>Lépjünk <span class="kek-kiemeles">Szintre.</span></h2>
+        </div>
+        <div class="lablec-jobb">
+            <a href="mailto:hello@zuralab.hu" class="lablec-link hover-link">hello@zuralab.hu</a>
+            <p>&copy; 2026 Zura Lab. Tiszta Kód, Mesterfokon.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

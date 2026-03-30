@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szolgáltatások - Zura Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="neuron-canvas"></canvas>
+
+    <div class="kurzor-pont"></div>
+    <div class="kurzor-kor"></div>
+
+    <nav class="navbar glass">
+        <a href="index.html" class="logo-link hover-link">
+            <img src="img/logo.png" alt="Zura Lab Ikon" class="logo-kep">
+            <div class="logo-szoveg">ZURA LAB.</div>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="menu-elem hover-link aktiv">Kezdőlap</a></li>
+            <li><a href="szolgaltatasok.html" class="menu-elem hover-link">Szolgáltatások</a></li>
+            <li><a href="munkak.html" class="menu-elem hover-link">Munkáink</a></li>
+            <li><a href="kapcsolat.html" class="menu-elem hover-link kiemelt-menu">Kapcsolat</a></li>
+        </ul>
+
+        <div class="hamburger hover-link">
+            <span class="vonal"></span>
+            <span class="vonal"></span>
+            <span class="vonal"></span>
+        </div>
+    </nav>
+
+    <div class="mobil-menu glass-kartya">
+        <ul class="mobil-nav-links">
+            <li><a href="index.html" class="mobil-link aktiv">Kezdőlap</a></li>
+            <li><a href="szolgaltatasok.html" class="mobil-link">Szolgáltatások</a></li>
+            <li><a href="munkak.html" class="mobil-link">Munkáink</a></li>
+            <li><a href="kapcsolat.html" class="mobil-link">Kapcsolat</a></li>
+        </ul>
+        <div class="mobil-lablec">
+            <p>hello@zuralab.hu</p>
+        </div>
+    </div>
+
+    <header class="page-hero">
+        <div class="page-hero-tartalom animacio-fel">
+            <div class="hero-felirat">Mit kínálunk?</div>
+            <h1 class="dekodolo-szoveg" data-ertek="SZOLGÁLTATÁSOK">SZOLGÁLTATÁSOK</h1>
+            <p>Nem futószalagon gyártunk weboldalakat. Egyedi, intelligens rendszereket építünk, amik kiemelnek a versenytársaid közül.</p>
+        </div>
+    </header>
+
+    <main class="szolgaltatasok-reszletes">
+        <div class="szolgaltatas-grid idozitett-animacio-kontener">
+            
+            <div class="szolgaltatas-kartya glass-kartya animacio-fel hover-bento bronz-keret">
+                <div class="szolg-sorszam bronz-szin">01 //</div>
+                <div class="szolg-tartalom">
+                    <h3>Egyedi Webfejlesztés</h3>
+                    <p>Felejtsd el a lassú, sebezhető sablonokat és a WordPress-t. Minden projektünket az alapoktól, tisztán HTML, CSS és JavaScript nyelven kódoljuk.</p>
+                    <ul class="szolg-jellemzok">
+                        <li>Brutális betöltési sebesség</li>
+                        <li>Tiszta, karbantartható kód</li>
+                        <li>Maximális biztonság (nincs plugin sebezhetőség)</li>
+                    </ul>
+                </div>
+                <div class="szolg-ikon bronz-szin">&lt;/&gt;</div>
+            </div>
+
+            <div class="szolgaltatas-kartya glass-kartya animacio-fel hover-bento kek-keret">
+                <div class="szolg-sorszam kek-szin">02 //</div>
+                <div class="szolg-tartalom">
+                    <h3>UI / UX Design</h3>
+                    <p>A technológia mit sem ér lenyűgöző megjelenés nélkül. Modern, pixel-perfekt és felhasználóbarát felületeket tervezünk, amik eladják magukat.</p>
+                    <ul class="szolg-jellemzok">
+                        <li>Kutatás-alapú drótvázak (Wireframing)</li>
+                        <li>Egyedi vizuális arculat kialakítása</li>
+                        <li>Finom mikro-interakciók és animációk</li>
+                    </ul>
+                </div>
+                <div class="szolg-ikon kek-szin">✨</div>
+            </div>
+
+            <div class="szolgaltatas-kartya glass-kartya animacio-fel hover-bento bronz-keret">
+                <div class="szolg-sorszam bronz-szin">03 //</div>
+                <div class="szolg-tartalom">
+                    <h3>Teljesítmény Optimalizálás</h3>
+                    <p>Van már egy oldalad, de lassú vagy nem hoz eredményeket? Szétszedjük, újraépítjük és a legmodernebb szabványok szerint optimalizáljuk.</p>
+                    <ul class="szolg-jellemzok">
+                        <li>Core Web Vitals maximalizálása</li>
+                        <li>Technikai SEO alapok lefektetése</li>
+                        <li>Kód-szintű refaktorálás</li>
+                    </ul>
+                </div>
+                <div class="szolg-ikon bronz-szin">⚡</div>
+            </div>
+
+            <div class="szolgaltatas-kartya glass-kartya animacio-fel hover-bento kek-keret">
+                <div class="szolg-sorszam kek-szin">04 //</div>
+                <div class="szolg-tartalom">
+                    <h3>Folyamatos Támogatás</h3>
+                    <p>A kódolás után sem hagyunk magadra. Skálázható architektúrát építünk, és folyamatos technikai hátteret biztosítunk a növekedésedhez.</p>
+                    <ul class="szolg-jellemzok">
+                        <li>Infrastruktúra monitorozás</li>
+                        <li>Gyors hibajavítás és frissítés</li>
+                        <li>Új funkciók integrálása igény szerint</li>
+                    </ul>
+                </div>
+                <div class="szolg-ikon kek-szin">🛡️</div>
+            </div>
+
+        </div>
+        
+        <div class="cta-szekcio animacio-fel glass-kartya">
+            <h2>Indítsuk el a <span class="kek-kiemeles">Közös Munkát</span></h2>
+            <p>Mondd el az elképzelésed, mi megkódoljuk a valóságot.</p>
+            <a href="kapcsolat.html" class="gomb magnetic-gomb hover-link">
+                <span class="gomb-szoveg">Kérj Ajánlatot</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="minimal-lablec animacio-fel">
+        <div class="lablec-bal">
+            <h2>Lépjünk <span class="kek-kiemeles">Szintre.</span></h2>
+        </div>
+        <div class="lablec-jobb">
+            <a href="mailto:hello@zuralab.hu" class="lablec-link hover-link">hello@zuralab.hu</a>
+            <p>&copy; 2026 Zura Lab. Tiszta Kód, Mesterfokon.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

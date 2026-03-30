@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapcsolat - Zura Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="neuron-canvas"></canvas>
+
+    <div class="kurzor-pont"></div>
+    <div class="kurzor-kor"></div>
+
+    <nav class="navbar glass">
+        <a href="index.html" class="logo-link hover-link">
+            <img src="img/logo.png" alt="Zura Lab Ikon" class="logo-kep">
+            <div class="logo-szoveg">ZURA LAB.</div>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="menu-elem hover-link aktiv">Kezdőlap</a></li>
+            <li><a href="szolgaltatasok.html" class="menu-elem hover-link">Szolgáltatások</a></li>
+            <li><a href="munkak.html" class="menu-elem hover-link">Munkáink</a></li>
+            <li><a href="kapcsolat.html" class="menu-elem hover-link kiemelt-menu">Kapcsolat</a></li>
+        </ul>
+
+        <div class="hamburger hover-link">
+            <span class="vonal"></span>
+            <span class="vonal"></span>
+            <span class="vonal"></span>
+        </div>
+    </nav>
+
+    <div class="mobil-menu glass-kartya">
+        <ul class="mobil-nav-links">
+            <li><a href="index.html" class="mobil-link aktiv">Kezdőlap</a></li>
+            <li><a href="szolgaltatasok.html" class="mobil-link">Szolgáltatások</a></li>
+            <li><a href="munkak.html" class="mobil-link">Munkáink</a></li>
+            <li><a href="kapcsolat.html" class="mobil-link">Kapcsolat</a></li>
+        </ul>
+        <div class="mobil-lablec">
+            <p>hello@zuralab.hu</p>
+        </div>
+    </div>
+
+    <header class="page-hero">
+        <div class="page-hero-tartalom animacio-fel">
+            <div class="hero-felirat">Rendszer Online // Pingeld a szervert</div>
+            <h1 class="dekodolo-szoveg" data-ertek="KAPCSOLAT">KAPCSOLAT</h1>
+            <p>Készen állsz szintet lépni? Írd meg az elképzelésed, és 24 órán belül felvesszük veled a kapcsolatot.</p>
+        </div>
+    </header>
+
+    <main class="kapcsolat-reszletes">
+        <div class="kapcsolat-grid idozitett-animacio-kontener">
+            
+            <div class="kapcsolat-info glass-kartya animacio-fel bronz-keret hover-bento">
+                <h2>Beszéljünk a <br><span class="bronz-kiemeles">Jövődről.</span></h2>
+                <p class="info-leiras">Minden nagyszerű projekt egy egyszerű üzenettel kezdődik. Ne habozz, keress minket bizalommal!</p>
+                
+                <div class="info-elemek">
+                    <div class="info-elem hover-link">
+                        <div class="info-ikon bronz-szin">✉</div>
+                        <div class="info-szoveg">
+                            <h4>Email</h4>
+                            <a href="mailto:hello@zuralab.hu">hello@zuralab.hu</a>
+                        </div>
+                    </div>
+
+                    <div class="info-elem hover-link">
+                        <div class="info-ikon kek-szin">✆</div>
+                        <div class="info-szoveg">
+                            <h4>Telefon</h4>
+                            <a href="tel:+36301234567">+36 30 123 4567</a>
+                        </div>
+                    </div>
+
+                    <div class="info-elem hover-link">
+                        <div class="info-ikon bronz-szin">⚲</div>
+                        <div class="info-szoveg">
+                            <h4>Bázis</h4>
+                            <p>Magyarország</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-alap-ikon bronz-szin">📡</div>
+            </div>
+
+            <div class="kapcsolat-urlap glass-kartya animacio-fel kek-keret hover-bento">
+                <form action="#" method="POST" class="urlap">
+                    
+                    <div class="urlap-sor">
+                        <div class="urlap-csoport">
+                            <label for="nev">Neved</label>
+                            <input type="text" id="nev" name="nev" class="urlap-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="urlap-csoport">
+                            <label for="email">Email címed</label>
+                            <input type="email" id="email" name="email" class="urlap-input" placeholder="john@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="urlap-csoport">
+                        <label for="targy">Projekt Témája</label>
+                        <input type="text" id="targy" name="targy" class="urlap-input" placeholder="Pl. Új weboldal fejlesztése" required>
+                    </div>
+
+                    <div class="urlap-csoport">
+                        <label for="uzenet">Üzenet</label>
+                        <textarea id="uzenet" name="uzenet" class="urlap-input" placeholder="Mesélj a projektedről, a céljaidról és a határidőkről..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="gomb magnetic-gomb hover-link">
+                        <span class="gomb-szoveg">Üzenet Küldése</span>
+                    </button>
+                </form>
+                <div class="bento-alap-ikon kek-szin">✉</div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="minimal-lablec animacio-fel">
+        <div class="lablec-bal">
+            <h2>Lépjünk <span class="kek-kiemeles">Szintre.</span></h2>
+        </div>
+        <div class="lablec-jobb">
+            <a href="mailto:hello@zuralab.hu" class="lablec-link hover-link">hello@zuralab.hu</a>
+            <p>&copy; 2026 Zura Lab. Tiszta Kód, Mesterfokon.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
