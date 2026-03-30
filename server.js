@@ -19,11 +19,15 @@ app.use(express.static(__dirname));
 // E-mail küldő konfiguráció (SMTP)
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, 
+    port: 587,
+    secure: false, // 587-es port esetén kötelezően false
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        // Ez segít átjutni a Railway hálózati korlátozásain
+        rejectUnauthorized: false
     }
 });
 
