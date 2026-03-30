@@ -216,12 +216,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+                // --- JAVÍTOTT LOADER SCRIPT ---
         window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        
-        // Egy kis késleltetés (pl. 500ms), hogy ne csak elvillanjon, ha túl gyors a net
+            const loader = document.getElementById('loader');
+            
+            setTimeout(() => {
+                if (loader) {
+                    loader.classList.add('rejtett');
+                }
+            }, 500); // Fél másodperc után tűnik el, ha minden oké
+        });
+
+        // BIZTONSÁGI KAPCSOLÓ: Ha 3 mp után még mindig ott lenne, tüntesse el erővel
         setTimeout(() => {
-            loader.classList.add('rejtett');
-        }, 800);
-    });
+            const loader = document.getElementById('loader');
+            if (loader && !loader.classList.contains('rejtett')) {
+                loader.classList.add('rejtett');
+                console.log("Loader kényszerítve leállítva (timeout)");
+            }
+        }, 3000);
 });
